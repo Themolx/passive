@@ -4,13 +4,38 @@ import ProductCard from '../shop/ProductCard';
 function FeaturedProducts() {
   const featuredProducts = [
     {
-      id: 1,
-      title: "Featured Glitch Art",
-      price: 29.99,
+      id: 'glitch-fx-v2',
+      title: "GLITCH FX V2",
+      description: "Professional analog-created glitch effects pack",
+      price: 99.99,
+      salePrice: 59.99,
       category: "Glitch Art",
-      gumroadLink: "https://gumroad.com/your-product-1"
+      thumbnail: "/assets/Final_Photo_v1.png",
+      software: ["After Effects", "Premiere Pro"],
+      link: "/shop/products/glitch-fx-v2"
     },
-    // Add more featured products...
+    {
+      id: 'advanced-compositing',
+      title: "Advanced Compositing",
+      description: "Professional VFX compositing techniques",
+      price: 199.99,
+      salePrice: 149.99,
+      category: "tutorial",
+      thumbnail: "/products/tutorials/compositing.jpg",
+      software: ["After Effects", "Nuke"],
+      link: "/shop/tutorials/advanced-compositing"
+    },
+    {
+      id: 'glitch-art-fundamentals',
+      title: "Glitch Art Fundamentals",
+      description: "Master the art of creating authentic glitch effects",
+      price: 79.99,
+      salePrice: 49.99,
+      category: "tutorial",
+      thumbnail: "/products/tutorials/glitch-art.jpg",
+      software: ["After Effects", "TouchDesigner"],
+      link: "/shop/tutorials/glitch-art-fundamentals"
+    }
   ];
 
   return (

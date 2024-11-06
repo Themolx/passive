@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import VideoHero from './components/home/VideoHero';
 import FeaturedProducts from './components/home/FeaturedProducts';
 import Cart from './components/shop/Cart';
@@ -16,6 +15,22 @@ import FeaturedWorks from './components/home/FeaturedWorks';
 import LatestBlogPosts from './components/home/LatestBlogPosts';
 import CallToAction from './components/home/CallToAction';
 import HeroSection from './components/home/HeroSection';
+import GlitchPackV2 from './pages/products/GlitchPackV2';
+import AdvancedCompositing from './pages/products/AdvancedCompositing';
+import GlitchArtFundamentals from './pages/products/GlitchArtFundamentals';
+
+// Separate Home component
+const Home = () => {
+  return (
+    <main>
+      <HeroSection />
+      <FeaturedWorks />
+      <FeaturedProducts />
+      <LatestBlogPosts />
+      <CallToAction />
+    </main>
+  );
+};
 
 function App() {
   return (
@@ -31,24 +46,14 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/about" element={<About />} />
+            <Route path="/shop/products/glitch-fx-v2" element={<GlitchPackV2 />} />
+            <Route path="/shop/tutorials/advanced-compositing" element={<AdvancedCompositing />} />
+            <Route path="/shop/tutorials/glitch-art-fundamentals" element={<GlitchArtFundamentals />} />
           </Routes>
         </AnimatePresence>
-        <Footer />
         <Cart />
       </div>
     </Router>
-  );
-}
-
-function Home() {
-  return (
-    <main>
-      <HeroSection />
-      <FeaturedWorks />
-      <FeaturedProducts />
-      <LatestBlogPosts />
-      <CallToAction />
-    </main>
   );
 }
 

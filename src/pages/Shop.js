@@ -1,92 +1,116 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import ProductCard from '../components/shop/ProductCard';
-import { getProductThumb } from '../utils/placeholders';
 
 function Shop() {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  
+  const [activeCategory, setActiveCategory] = useState('all');
+
   const products = [
     {
-      id: 1,
-      title: "Cyberpunk Glitch Effects",
-      price: 29.99,
-      category: "After Effects",
-      thumbnail: getProductThumb(0)
+      id: 'glitch-fx-v2',
+      title: "GLITCH FX V2 - ANALOG DISTORTER",
+      description: "Professional analog-created glitch effects pack with real CRT captures.",
+      price: 99.99,
+      salePrice: 59.99,
+      category: "glitch",
+      thumbnail: "/assets/Final_Photo_v1.png",
+      badge: "Best Seller",
+      software: ["After Effects", "Premiere Pro", "DaVinci Resolve"],
+      link: "/shop/products/glitch-fx-v2"
     },
     {
-      id: 2,
-      title: "DaVinci Color Presets",
-      price: 49.99,
-      category: "DaVinci Resolve",
-      thumbnail: getProductThumb(1)
+      id: 'advanced-compositing',
+      title: "ADVANCED COMPOSITING MASTERCLASS",
+      description: "Learn professional VFX compositing techniques from industry experts.",
+      price: 199.99,
+      salePrice: 149.99,
+      category: "tutorial",
+      thumbnail: "/products/tutorials/compositing.jpg",
+      badge: "New Course",
+      software: ["After Effects", "Nuke"],
+      features: [
+        "12+ Hours of Content",
+        "Project Files Included",
+        "Lifetime Access",
+        "Certificate"
+      ],
+      link: "/shop/tutorials/advanced-compositing"
     },
     {
-      id: 3,
-      title: "Neon Light Effects Pack",
-      price: 39.99,
-      category: "After Effects",
-      thumbnail: getProductThumb(2)
-    },
-    {
-      id: 4,
-      title: "Film Grain Package",
-      price: 19.99,
-      category: "Visual Effects",
-      thumbnail: getProductThumb(3)
-    },
-    {
-      id: 5,
-      title: "Modern Transitions",
-      price: 34.99,
-      category: "DaVinci Resolve",
-      thumbnail: getProductThumb(4)
-    },
-    {
-      id: 6,
-      title: "Glitch Transitions",
-      price: 24.99,
-      category: "After Effects",
-      thumbnail: getProductThumb(5)
+      id: 'glitch-art-fundamentals',
+      title: "GLITCH ART FUNDAMENTALS",
+      description: "Master the art of creating authentic glitch effects using both digital and analog techniques.",
+      price: 79.99,
+      salePrice: 49.99,
+      category: "tutorial",
+      thumbnail: "/products/tutorials/glitch-art.jpg",
+      software: ["After Effects", "TouchDesigner"],
+      features: [
+        "8+ Hours of Content",
+        "Hardware Tutorials",
+        "Practice Projects",
+        "Community Access"
+      ],
+      link: "/shop/tutorials/glitch-art-fundamentals"
     }
   ];
 
-  const categories = ['all', 'After Effects', 'DaVinci Resolve', 'Visual Effects'];
+  const categories = [
+    { id: 'all', name: 'All Products' },
+    { id: 'glitch', name: 'Glitch Effects' },
+    { id: 'tutorial', name: 'Tutorials' }
+  ];
+
+  const filteredProducts = activeCategory === 'all' 
+    ? products 
+    : products.filter(product => product.category === activeCategory);
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="container mx-auto px-4 py-16"
+      exit={{ opacity: 0 }}
+      className="min-h-screen py-24"
     >
-      <h1 className="text-4xl font-bold mb-12">Shop</h1>
-      
-      {/* Category Filter */}
-      <div className="flex gap-4 mb-12 overflow-x-auto pb-4">
-        {categories.map(category => (
-          <button
-            key={category}
-            onClick={() => setSelectedCategory(category)}
-            className={`px-6 py-2 rounded-full whitespace-nowrap transition-colors
-                      ${selectedCategory === category 
-                        ? 'bg-white text-black' 
-                        : 'border border-white/10 hover:bg-white/5'}`}
-          >
-            {category.charAt(0).toUpperCase() + category.slice(1)}
-          </button>
-        ))}
-      </div>
+      <div className="container mx-auto px-4">
+        {/* Hero Section */}
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-bold mb-6">Digital Assets & Tutorials</h1>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            Level up your skills with professional VFX assets and in-depth tutorials
+          </p>
+        </div>
 
-      {/* Products Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {products
-          .filter(product => selectedCategory === 'all' || product.category === selectedCategory)
-          .map((product, index) => (
-            <ProductCard key={product.id} product={product} index={index} />
+        {/* Categories */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {categories.map(category => (
+            <button
+              key={category.id}
+              onClick={() => setActiveCategory(category.id)}
+              className={`px-6 py-2 rounded-full transition-all ${
+                activeCategory === category.id
+                  ? 'bg-purple-600 text-white'
+                  : 'bg-white/5 hover:bg-white/10'
+              }`}
+            >
+              {category.name}
+            </button>
           ))}
+        </div>
+
+        {/* Products Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProducts.map(product => (
+            <ProductCard 
+              key={product.id} 
+              product={product}
+              badge={product.badge}
+            />
+          ))}
+        </div>
       </div>
     </motion.div>
   );
 }
 
-export default Shop; 
+export default Shop;
