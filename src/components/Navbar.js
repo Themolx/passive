@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Navbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     return scrollY.onChange(() => setIsScrolled(scrollY.get() > 20));
   }, [scrollY]);
+
+  const isActive = (path) => location.pathname === path;
 
   return (
     <motion.nav
@@ -23,13 +26,36 @@ function Navbar() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-xl font-bold">MT</Link>
+          <Link to="/" className="flex items-center gap-3">
+            <motion.span 
+              className="text-xl font-bold"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              MT
+            </motion.span>
+          </Link>
           
           <div className="flex items-center gap-4">
-            <Link to="/" className="nav-link">Home</Link>
-            <Link to="/shop" className="nav-link">Shop</Link>
-            <Link to="/blog" className="nav-link">Blog</Link>
-            <Link to="/about" className="nav-link">About</Link>
+            {[
+              { path: '/', label: 'Home' },
+              { path: '/shop', label: 'Shop' },
+              { path: '/blog', label: 'Blog' },
+              { path: '/about', label: 'About' },
+            ].map(({ path, label }) => (
+              <motion.div
+                key={path}
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 1 }}
+              >
+                <Link
+                  to={path}
+                  className={`nav-link ${isActive(path) ? 'active' : ''}`}
+                >
+                  {label}
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

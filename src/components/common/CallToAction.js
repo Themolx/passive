@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import GlitchButton from '../common/GlitchButton';
 
 function CallToAction({ title, description, linkText, to }) {
   return (
@@ -11,7 +12,7 @@ function CallToAction({ title, description, linkText, to }) {
     >
       <h3 className="text-2xl font-bold mb-4">{title}</h3>
       <p className="text-gray-300 mb-6">{description}</p>
-      <Link
+      <GlitchButton
         to={to}
         className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-medium 
                  hover:bg-gray-100 transition-colors"
@@ -31,7 +32,7 @@ function CallToAction({ title, description, linkText, to }) {
             d="M14 5l7 7m0 0l-7 7m7-7H3"
           />
         </svg>
-      </Link>
+      </GlitchButton>
     </motion.div>
   );
 }
