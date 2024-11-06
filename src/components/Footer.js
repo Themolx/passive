@@ -9,6 +9,14 @@ function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">MT</h3>
             <p>Your digital art and templates store.</p>
+            <a 
+              href="https://themolx.github.io/WEB/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-purple-400 hover:text-purple-300 transition-colors mt-2 inline-block"
+            >
+              Visit Portfolio Website
+            </a>
           </div>
           <div>
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
