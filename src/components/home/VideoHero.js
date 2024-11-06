@@ -7,11 +7,15 @@ function VideoHero() {
   return (
     <div className="relative h-screen">
       <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a] to-[#111111]">
-        <img
-          src={getPlaceholderImage(1920, 1080, 'Showreel')}
-          alt="Showreel"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className="w-full h-full object-cover opacity-50"
-        />
+        >
+          <source src="/path-to-your-showreel.mp4" type="video/mp4" />
+        </video>
       </div>
       
       <div className="absolute inset-0 bg-black/50" />
@@ -24,7 +28,8 @@ function VideoHero() {
       >
         <div className="max-w-3xl mx-auto px-4">
           <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6"
+            className="text-5xl md:text-7xl font-bold mb-6 glitch-effect"
+            data-text="Professional VFX Assets"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -42,16 +47,22 @@ function VideoHero() {
           </motion.p>
           
           <motion.div
+            className="flex justify-center gap-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
             <Link 
               to="/shop" 
-              className="bg-white text-black px-8 py-4 rounded-full 
-                       font-medium hover:bg-gray-100 transition-colors"
+              className="button-primary"
             >
               Browse Products
+            </Link>
+            <Link 
+              to="/about" 
+              className="button-secondary"
+            >
+              Learn More
             </Link>
           </motion.div>
         </div>

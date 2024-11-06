@@ -25,7 +25,8 @@ function Navbar() {
         <div className="flex items-center justify-between">
           <Link to="/" className="text-xl font-bold">MT</Link>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
+            <Link to="/" className="nav-link">Home</Link>
             <Link to="/shop" className="nav-link">Shop</Link>
             <Link to="/blog" className="nav-link">Blog</Link>
             <Link to="/about" className="nav-link">About</Link>

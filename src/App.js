@@ -12,6 +12,10 @@ import Account from './pages/Account';
 import Blog from './pages/Blog';
 import About from './pages/About';
 import BlogPost from './pages/BlogPost';
+import FeaturedWorks from './components/home/FeaturedWorks';
+import LatestBlogPosts from './components/home/LatestBlogPosts';
+import CallToAction from './components/home/CallToAction';
+import HeroSection from './components/home/HeroSection';
 
 function App() {
   return (
@@ -39,8 +43,11 @@ function App() {
 function Home() {
   return (
     <main>
-      <VideoHero />
+      <HeroSection />
+      <FeaturedWorks />
       <FeaturedProducts />
+      <LatestBlogPosts />
+      <CallToAction />
     </main>
   );
 }

@@ -171,23 +171,3 @@ body {
   mix-blend-mode: overlay;
   pointer-events: none;
 }
-
-/* Blog specific styles */
-.blog-tag {
-  @apply px-3 py-1 rounded-full text-sm font-medium transition-colors;
-}
-
-.blog-video-container {
-  @apply relative rounded-xl overflow-hidden bg-black/20;
-  &::before {
-    content: '';
-    @apply absolute inset-0 border-2 border-yellow-500/20 rounded-xl pointer-events-none;
-  }
-}
-
-.blog-post {
-  @apply transition-all duration-300;
-  &:hover {
-    @apply transform -translate-y-1;
-  }
-}
