@@ -10,6 +10,8 @@ import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
 import Account from './pages/Account';
 import Blog from './pages/Blog';
+import About from './pages/About';
+import BlogPost from './pages/BlogPost';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
             <Route path="/shop/:productId" element={<ProductDetail />} />
             <Route path="/account" element={<Account />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </AnimatePresence>
         <Footer />

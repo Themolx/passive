@@ -123,12 +123,13 @@ function Blog() {
               {post.excerpt}
             </p>
 
-            {/* Read More Link */}
+            {/* Continue Reading Link */}
             <Link 
               to={`/blog/${post.slug}`}
-              className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 
+                       text-white rounded-full transition-colors"
             >
-              Read More 
+              Continue Reading
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4"

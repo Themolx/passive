@@ -1,0 +1,12 @@
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.profile-image {
+  width: 200px; /* Adjust size as needed */
+  height: 200px;
+  border-radius: 50%; /* Makes it circular */
+  object-fit: cover;
+} 

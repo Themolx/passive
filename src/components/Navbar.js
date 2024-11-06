@@ -26,7 +26,6 @@ function Navbar() {
           <Link to="/" className="text-xl font-bold">MT</Link>
           
           <div className="flex items-center gap-2">
-            <Link to="/portfolio" className="nav-link">Portfolio</Link>
             <Link to="/shop" className="nav-link">Shop</Link>
             <Link to="/blog" className="nav-link">Blog</Link>
             <Link to="/about" className="nav-link">About</Link>
