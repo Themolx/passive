@@ -41,7 +41,11 @@ function About() {
         >
           <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-purple-500/20 shrink-0">
             <img
-              src="/profile.jpg"
+<<<<<<< HEAD
+              src="https://avatars.githubusercontent.com/u/183303841?v=4"
+=======
+              src="https://raw.githubusercontent.com/Themolx/WEB/main/public/profile.jpg"
+>>>>>>> origin/est
               alt="Martin Tomek"
               className="w-full h-full object-cover"
             />
@@ -112,67 +116,40 @@ function About() {
 
       {/* Contact CTA */}
       <section>
-        <div className="bg-white/5 rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-4">Let's Work Together</h2>
-          <p className="text-gray-300 mb-6">
-            Interested in collaboration or have a project in mind? Feel free to reach out.
+        <div className="bg-gradient-to-r from-purple-900/20 to-purple-600/20 rounded-xl p-12 border border-purple-500/20">
+          <h2 className="text-3xl font-bold mb-4">Let's Work Together</h2>
+          <p className="text-gray-300 mb-8 max-w-2xl">
+            Interested in collaboration or have a project in mind? I specialize in VFX, motion design, and creative development. Let's create something amazing together.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link
               to="/contact"
               className="px-6 py-3 bg-white text-black rounded-full font-medium 
-                       hover:bg-gray-100 transition-colors"
+                       hover:bg-gray-100 transition-all transform hover:scale-105"
             >
               Get in Touch
             </Link>
             <a
+              href="https://themolx.github.io/WEB/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-purple-600 text-white rounded-full font-medium
+                       hover:bg-purple-700 transition-all transform hover:scale-105"
+            >
+              Visit Portfolio
+            </a>
+            <a
               href="https://github.com/Themolx"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 border border-white/10 rounded-full 
-                       hover:bg-white/5 transition-colors"
+              className="px-6 py-3 border border-white/20 rounded-full 
+                       hover:bg-white/5 transition-all"
             >
               GitHub Profile
             </a>
           </div>
         </div>
       </section>
-
-      {/* Add this new section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
-        className="text-center bg-gradient-to-r from-purple-900/20 to-purple-600/20 rounded-2xl p-8 border border-purple-500/20"
-      >
-        <h2 className="text-2xl font-bold mb-4">Visit My Personal Website</h2>
-        <p className="text-gray-300 mb-6">
-          Discover more of my work and latest projects on my personal website
-        </p>
-        <a
-          href="https://themolx.github.io/WEB/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-8 py-3 bg-purple-600 text-white rounded-full font-medium 
-                   hover:bg-purple-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
-        >
-          Visit Website
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-            />
-          </svg>
-        </a>
-      </motion.div>
     </motion.div>
   );
 }

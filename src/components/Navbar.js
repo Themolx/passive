@@ -23,7 +23,9 @@ function Navbar() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-xl font-bold">MT</Link>
+          <Link to="/" className="flex items-center gap-3">
+            <span className="text-xl font-bold">MT</span>
+          </Link>
           
           <div className="flex items-center gap-4">
             <Link to="/" className="nav-link">Home</Link>

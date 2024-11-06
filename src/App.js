@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import VideoHero from './components/home/VideoHero';
 import FeaturedProducts from './components/home/FeaturedProducts';
 import Cart from './components/shop/Cart';
@@ -33,7 +32,6 @@ function App() {
             <Route path="/about" element={<About />} />
           </Routes>
         </AnimatePresence>
-        <Footer />
         <Cart />
       </div>
     </Router>
