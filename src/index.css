@@ -20,7 +20,49 @@ body {
 @layer components {
   .nav-link {
     @apply flex items-center gap-2 px-4 py-2 rounded-full text-sm
-           transition-all duration-300 hover:bg-white/5;
+           transition-all duration-300 relative overflow-hidden;
+  }
+
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+      rgba(255,255,255,0.1) 0%,
+      rgba(255,255,255,0.2) 50%,
+      rgba(255,255,255,0.1) 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-link:hover::before {
+    transform: translateX(0);
+    animation: glitch-slide 0.3s ease forwards;
+  }
+
+  @keyframes glitch-slide {
+    0% {
+      transform: translateX(-100%) skewX(0deg);
+    }
+    20% {
+      transform: translateX(-50%) skewX(-20deg);
+    }
+    40% {
+      transform: translateX(0%) skewX(15deg);
+    }
+    60% {
+      transform: translateX(-25%) skewX(-15deg);
+    }
+    80% {
+      transform: translateX(10%) skewX(5deg);
+    }
+    100% {
+      transform: translateX(0) skewX(0deg);
+    }
   }
 
   .section-card {
@@ -45,21 +87,27 @@ body {
 @keyframes glitch {
   0% {
     clip-path: inset(40% 0 61% 0);
+    transform: translate(-2px, 2px);
   }
   20% {
     clip-path: inset(92% 0 1% 0);
+    transform: translate(1px, -3px);
   }
   40% {
     clip-path: inset(43% 0 1% 0);
+    transform: translate(3px, 1px);
   }
   60% {
     clip-path: inset(25% 0 58% 0);
+    transform: translate(-3px, -2px);
   }
   80% {
     clip-path: inset(54% 0 7% 0);
+    transform: translate(2px, 3px);
   }
   100% {
     clip-path: inset(58% 0 43% 0);
+    transform: translate(-2px, -1px);
   }
 }
 
@@ -77,4 +125,69 @@ body {
 @keyframes scroll {
   0% { transform: translateY(0); }
   100% { transform: translateY(-50%); }
+}
+
+.glitch-effect {
+  position: relative;
+}
+
+.glitch-effect:hover::before,
+.glitch-effect:hover::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+}
+
+.glitch-effect:hover::before {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  color: #00ffff;
+  z-index: 1;
+}
+
+.glitch-effect:hover::after {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+  color: #ff00ff;
+  z-index: 2;
+}
+
+.analog-noise {
+  position: relative;
+  overflow: hidden;
+}
+
+.analog-noise::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgE1xQAAAABh0Uk5TABAgMEBQYHCAj5+vv8/f7/////////////////////////8VQXeBAAAAJklEQVQ4y2NgQAX8/PyD1WD0+v//g9VgGzVq1KhRo0aNGjWKLQAAoJw3bkq8dJYAAAAASUVORK5CYII=");
+  opacity: 0.02;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Blog specific styles */
+.blog-tag {
+  @apply px-3 py-1 rounded-full text-sm font-medium transition-colors;
+}
+
+.blog-video-container {
+  @apply relative rounded-xl overflow-hidden bg-black/20;
+  &::before {
+    content: '';
+    @apply absolute inset-0 border-2 border-yellow-500/20 rounded-xl pointer-events-none;
+  }
+}
+
+.blog-post {
+  @apply transition-all duration-300;
+  &:hover {
+    @apply transform -translate-y-1;
+  }
 }

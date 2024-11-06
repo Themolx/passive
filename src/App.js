@@ -9,6 +9,7 @@ import Cart from './components/shop/Cart';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
 import Account from './pages/Account';
+import Blog from './pages/Blog';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/shop" element={<Shop />} />
             <Route path="/shop/:productId" element={<ProductDetail />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/blog" element={<Blog />} />
           </Routes>
         </AnimatePresence>
         <Footer />
