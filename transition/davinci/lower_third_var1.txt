@@ -1,0 +1,239 @@
+{
+	Tools = ordered() {
+		Transform1 = Transform {
+			Inputs = {
+				Center = Input { Value = { 0.5036866359447, 0.49016393442623 }, },
+				Input = Input {
+					SourceOp = "FastNoise1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 495, 16.5 } },
+		},
+		PrismBlur1_1 = ofx.com.blackmagicdesign.resolvefx.PrismBlur {
+			Inputs = {
+				Source = Input {
+					SourceOp = "Displace1_1",
+					Source = "Output",
+				},
+				CenterXPos = Input { Value = 0.5, },
+				CenterYPos = Input { Value = 0.5, },
+				xyPosition = Input { Value = { 0.5, 0.5 }, },
+				BlurStrength = Input { Value = 0, },
+				AberrationDistance = Input { Value = 0.05, },
+				AberrationStrength = Input { Value = 0.400000005960464, },
+				VignetteSize = Input { Value = 0.100000001490116, },
+				VignetteSharpness = Input { Value = 10, },
+				BlendAmount = Input { Value = 0, },
+				isUseLegacyPosition = Input { Value = 0, },
+				blendGroup = Input { Value = 0, },
+				blendIn = Input { Value = 1, },
+				blend = Input { Value = 0, },
+				ignoreContentShape = Input { Value = 0, },
+				legacyIsProcessRGBOnly = Input { Value = 0, },
+				IsNoTemporalFramesReqd = Input { Value = 0, },
+				refreshTrigger = Input { Value = 1, },
+				resolvefxVersion = Input { Value = "2.3", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 715, 16.5 } },
+		},
+		FastNoise1 = FastNoise {
+			Inputs = {
+				GlobalOut = Input { Value = 124, },
+				Width = Input { Value = 1920, },
+				Height = Input { Value = 1080, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				Center = Input { Value = { 0.432862190812721, 0.5 }, },
+				Detail = Input { Value = 3.07, },
+				Contrast = Input { Value = 1.89, },
+				XScale = Input { Value = 6.93, },
+				Discontinuous = Input { Value = 1, },
+				Inverted = Input { Value = 1, },
+				Color1Alpha = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 495, -16.5 } },
+		},
+		PrismBlur1 = ofx.com.blackmagicdesign.resolvefx.PrismBlur {
+			Inputs = {
+				Source = Input {
+					SourceOp = "Displace1",
+					Source = "Output",
+				},
+				CenterXPos = Input { Value = 0.5, },
+				CenterYPos = Input { Value = 0.5, },
+				xyPosition = Input { Value = { 0.5, 0.5 }, },
+				BlurStrength = Input { Value = 0, },
+				AberrationDistance = Input { Value = 0.05, },
+				AberrationStrength = Input { Value = 0.400000005960464, },
+				VignetteSize = Input { Value = 0.100000001490116, },
+				VignetteSharpness = Input { Value = 10, },
+				BlendAmount = Input { Value = 0, },
+				isUseLegacyPosition = Input { Value = 0, },
+				blendGroup = Input { Value = 0, },
+				blendIn = Input { Value = 1, },
+				blend = Input { Value = 0, },
+				ignoreContentShape = Input { Value = 0, },
+				legacyIsProcessRGBOnly = Input { Value = 0, },
+				IsNoTemporalFramesReqd = Input { Value = 0, },
+				refreshTrigger = Input { Value = 1, },
+				resolvefxVersion = Input { Value = "2.3", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 440, 49.5 } },
+		},
+		Transform1_1 = Transform {
+			Inputs = {
+				Center = Input { Value = { 0.5036866359447, 0.49016393442623 }, },
+				Input = Input {
+					SourceOp = "FastNoise1_1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 770, -16.5 } },
+		},
+		Displace1_1 = Displace {
+			Inputs = {
+				Type = Input { Value = 1, },
+				XOffset = Input { Value = 0.286, },
+				XRefraction = Input { Value = 0.005, },
+				Input = Input {
+					SourceOp = "Text1_1",
+					Source = "Output",
+				},
+				Foreground = Input {
+					SourceOp = "Transform1_1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 605, -16.5 } },
+		},
+		FastNoise1_1 = FastNoise {
+			Inputs = {
+				GlobalOut = Input { Value = 124, },
+				Width = Input { Value = 1920, },
+				Height = Input { Value = 1080, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				Center = Input { Value = { 0.432862190812721, 0.5 }, },
+				Detail = Input { Value = 3.07, },
+				Contrast = Input { Value = 1.89, },
+				XScale = Input { Value = 6.93, },
+				Discontinuous = Input { Value = 1, },
+				Inverted = Input { Value = 1, },
+				Color1Alpha = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 770, -49.5 } },
+		},
+		Transform2 = Transform {
+			CtrlWZoom = false,
+			Inputs = {
+				Center = Input {
+					SourceOp = "Path1",
+					Source = "Position",
+				},
+				Input = Input {
+					SourceOp = "Text1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 330, -49.5 } },
+		},
+		Path1 = PolyPath {
+			DrawMode = "InsertAndModify",
+			CtrlWZoom = false,
+			Inputs = {
+				Displacement = Input {
+					SourceOp = "Path1Displacement",
+					Source = "Value",
+				},
+				PolyLine = Input {
+					Value = Polyline {
+						Points = {
+							{ Linear = true, LockY = true, X = -0.580089062467712, Y = -0.349056603773585, RX = 0.117933723196881, RY = 0 },
+							{ Linear = true, LockY = true, X = -0.226287892877069, Y = -0.349056603773585, LX = -0.117933723196881, LY = 0 }
+						}
+					},
+				},
+			},
+		},
+		Path1Displacement = BezierSpline {
+			SplineColor = { Red = 255, Green = 0, Blue = 255 },
+			CtrlWZoom = false,
+			KeyFrames = {
+				[0] = { 0, RH = { 0, 2.63209907920272 }, Flags = { Linear = true, LockedY = true } },
+				[13] = { 1, LH = { 5.68593536130725, 0.949903666858269 }, RH = { 23.3322998285294, 1.07076917690774 }, Flags = { LockedY = true } },
+				[44] = { 0.769999999999999, LH = { 14.5308645625174, -1.2966665845447 } }
+			}
+		},
+		Displace1 = Displace {
+			Inputs = {
+				Type = Input { Value = 1, },
+				XOffset = Input { Value = 0.286, },
+				XRefraction = Input { Value = 0.005, },
+				Input = Input {
+					SourceOp = "Transform2",
+					Source = "Output",
+				},
+				Foreground = Input {
+					SourceOp = "Transform1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 330, 16.5 } },
+		},
+		Text1 = TextPlus {
+			Inputs = {
+				GlobalOut = Input { Value = 124, },
+				Width = Input { Value = 1920, },
+				Height = Input { Value = 1080, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				SelectElement = Input { Value = 3, },
+				Select = Input { Value = 3, },
+				Enabled4 = Input { Value = 1, },
+				StyledText = Input { Value = "Test", },
+				Font = Input { Value = "Open Sans", },
+				Style = Input { Value = "Bold", },
+				VerticalJustificationNew = Input { Value = 3, },
+				HorizontalJustificationNew = Input { Value = 3, },
+				ExtendHorizontal4 = Input { Value = 2, },
+				ExtendVertical4 = Input { Value = 0.51, },
+				Shear4 = Input { Value = 1, },
+				ShearX4 = Input { Value = -0.25, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 330, -82.5 } },
+		},
+		MediaOut1 = MediaOut {
+			Inputs = {
+				Index = Input { Value = "0", },
+				Input = Input {
+					SourceOp = "Displace1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 330, 82.5 } },
+		},
+		Text1_1 = TextPlus {
+			Inputs = {
+				GlobalOut = Input { Value = 124, },
+				Width = Input { Value = 1920, },
+				Height = Input { Value = 1080, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				SelectElement = Input { Value = 3, },
+				Select = Input { Value = 3, },
+				Enabled4 = Input { Value = 1, },
+				StyledText = Input { Value = "Test", },
+				Font = Input { Value = "Open Sans", },
+				Style = Input { Value = "Bold", },
+				VerticalJustificationNew = Input { Value = 3, },
+				HorizontalJustificationNew = Input { Value = 3, },
+				ExtendHorizontal4 = Input { Value = 2, },
+				ExtendVertical4 = Input { Value = 0.51, },
+				Shear4 = Input { Value = 1, },
+				ShearX4 = Input { Value = -0.25, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 605, -115.5 } },
+		}
+	}
+}
