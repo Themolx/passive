@@ -18,6 +18,10 @@ import HeroSection from './components/home/HeroSection';
 import GlitchPackV2 from './pages/products/GlitchPackV2';
 import AdvancedCompositing from './pages/products/AdvancedCompositing';
 import GlitchArtFundamentals from './pages/products/GlitchArtFundamentals';
+import ResolumeEffectsPack from './pages/products/ResolumeEffectsPack';
+import AnalogGrainPack from './pages/products/AnalogGrainPack';
+import TransitionPack from './pages/products/TransitionPack';
+import ScrollToTop from './components/common/ScrollToTop';
 
 // Separate Home component
 const Home = () => {
@@ -35,6 +39,7 @@ const Home = () => {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-[#0A0A0A]">
         <Navbar />
         <AnimatePresence mode="wait">
@@ -49,6 +54,9 @@ function App() {
             <Route path="/shop/products/glitch-fx-v2" element={<GlitchPackV2 />} />
             <Route path="/shop/tutorials/advanced-compositing" element={<AdvancedCompositing />} />
             <Route path="/shop/tutorials/glitch-art-fundamentals" element={<GlitchArtFundamentals />} />
+            <Route path="/shop/products/resolume-fx-pack" element={<ResolumeEffectsPack />} />
+            <Route path="/shop/products/analog-grain-pack" element={<AnalogGrainPack />} />
+            <Route path="/shop/products/transition-pack" element={<TransitionPack />} />
           </Routes>
         </AnimatePresence>
         <Cart />

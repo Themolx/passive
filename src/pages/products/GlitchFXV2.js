@@ -3,11 +3,14 @@ import ProductTemplate from './ProductTemplate';
 
 function GlitchFXV2() {
   const product = {
+    id: 'glitch-fx-v2',
+    category: 'glitch',
     title: "GLITCH FX V2 - ANALOG DISTORTER",
-    description: "Professional analog-created glitch effects pack with real CRT captures. Created using genuine analog hardware and CRT monitors.",
+    description: "Professional analog-created glitch effects pack with real CRT captures.",
     price: 99.99,
     salePrice: 59.99,
     thumbnail: "/assets/Final_Photo_v1.png",
+    gumroadUrl: "https://vfxmartin8.gumroad.com/l/jbkrp",
     features: [
       "100% Analog-Created Effects",
       "4K Resolution",
