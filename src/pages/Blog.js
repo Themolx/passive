@@ -1,8 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 function Blog() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState({ type: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus({ type: '', message: '' });
+
+    try {
+      const response = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+
+      setStatus({
+        type: 'success',
+        message: 'Thanks for subscribing! Please check your email to confirm.'
+      });
+      setEmail('');
+    } catch (error) {
+      setStatus({
+        type: 'error',
+        message: error.message || 'Something went wrong. Please try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const blogPosts = [
     {
       date: "March 15, 2024",
@@ -70,6 +109,76 @@ function Blog() {
       exit={{ opacity: 0 }}
       className="max-w-4xl mx-auto px-4 py-24"
     >
+      {/* Newsletter Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-16 bg-gradient-to-r from-purple-900/20 to-purple-600/20 rounded-2xl p-8 border border-purple-500/20"
+      >
+        <h2 className="text-2xl font-bold mb-4">Stay Updated</h2>
+        <p className="text-gray-300 mb-6">
+          Subscribe to get notified about new tutorials, VFX resources, and industry insights.
+        </p>
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            className="px-6 py-3 bg-white/5 border border-purple-500/20 rounded-full
+                     focus:outline-none focus:border-purple-500/40 flex-grow"
+            required
+            disabled={isSubmitting}
+          />
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={`px-8 py-3 rounded-full font-medium transition-all transform
+                     ${isSubmitting 
+                       ? 'bg-gray-400 cursor-not-allowed' 
+                       : 'bg-white text-black hover:bg-gray-100 hover:scale-105'}`}
+          >
+            {isSubmitting ? (
+              <span className="flex items-center gap-2">
+                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  />
+                </svg>
+                Subscribing...
+              </span>
+            ) : (
+              'Subscribe'
+            )}
+          </button>
+        </form>
+
+        {/* Status Message */}
+        {status.message && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`mt-4 px-4 py-2 rounded-lg ${
+              status.type === 'success' 
+                ? 'bg-green-500/20 text-green-200' 
+                : 'bg-red-500/20 text-red-200'
+            }`}
+          >
+            {status.message}
+          </motion.div>
+        )}
+      </motion.section>
+
       {/* Blog Posts */}
       <div className="space-y-16">
         {blogPosts.map((post, index) => (

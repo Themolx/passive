@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import GlitchButton from '../../components/common/GlitchButton';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
+import SimilarProducts from '../../components/products/SimilarProducts';
 
 function ProductTemplate({ product }) {
   const breadcrumbItems = [
@@ -85,6 +86,11 @@ function ProductTemplate({ product }) {
             ))}
           </div>
         </section>
+
+        <SimilarProducts 
+          currentProductId={product.id} 
+          category={product.category}
+        />
       </div>
     </motion.div>
   );

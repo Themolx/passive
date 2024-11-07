@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import GlitchButton from '../../components/common/GlitchButton';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
+import ImageCompareSlider from '../../components/common/ImageCompareSlider';
 
 function GlitchPackV2() {
   const features = [
@@ -61,7 +62,9 @@ function GlitchPackV2() {
             </p>
             <div className="flex gap-4">
               <GlitchButton
-                className="px-8 py-4 bg-white text-black rounded-full font-medium"
+                to="https://vfxmartin8.gumroad.com/l/jbkrp"
+                className="px-8 py-4 bg-white text-black rounded-full font-medium
+                         hover:bg-gray-100 transition-all transform hover:scale-105"
               >
                 Buy Now - $59.99
               </GlitchButton>
@@ -75,6 +78,19 @@ function GlitchPackV2() {
             />
           </div>
         </div>
+
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-8">See the Difference</h2>
+          <div className="max-w-4xl mx-auto">
+            <ImageCompareSlider
+              beforeImage="/assets/Glitch/before.jpg"
+              afterImage="/assets/Glitch/after.jpg"
+            />
+            <p className="text-gray-400 text-center mt-4">
+              Drag the slider to compare the original footage with the applied effect
+            </p>
+          </div>
+        </section>
 
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8">Created with Real Hardware</h2>
