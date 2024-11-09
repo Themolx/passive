@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AiConversation } from './AiConversation';
+import { BlobDemo } from '../demos/BlobDemo';
+import { DragDemo } from '../demos/DragDemo';
+import { Example } from '../demos/Example';
 
 function BlogContent({ content }) {
   switch (content.type) {
@@ -69,23 +72,37 @@ function BlogContent({ content }) {
 
     case 'development-timeline':
       return (
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-12"
+        >
           <h2 className="text-2xl font-bold mb-6">{content.content.title}</h2>
           <div className="space-y-4">
             {content.content.stages.map((stage, index) => (
-              <div key={index} className="bg-white/5 rounded-lg p-4">
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white/5 rounded-lg p-4"
+              >
                 <div className="text-sm text-gray-400">{stage.date}</div>
                 <div className="font-semibold">{stage.title}</div>
                 <p className="text-gray-300">{stage.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       );
 
     case 'github-journey':
       return (
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-12"
+        >
           <h2 className="text-2xl font-bold mb-6">{content.content.title}</h2>
           <p className="text-gray-300 mb-8">{content.content.text}</p>
           
@@ -122,7 +139,7 @@ function BlogContent({ content }) {
               )}
             </div>
           ))}
-        </div>
+        </motion.div>
       );
 
     case 'encouragement':
@@ -222,6 +239,118 @@ function BlogContent({ content }) {
               )}
             </div>
           ))}
+        </motion.div>
+      );
+
+    case 'interactive-demo':
+      const DemoComponent = {
+        BlobDemo,
+        DragDemo,
+        Example
+      }[content.content.demo];
+
+      return (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-12"
+        >
+          <h2 className="text-2xl font-bold mb-6">{content.content.title}</h2>
+          <DemoComponent />
+        </motion.div>
+      );
+
+    case 'technical-breakdown':
+      return (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="mb-12"
+        >
+          <h2 className="text-2xl font-bold mb-6">{content.title}</h2>
+          <p className="text-gray-300 mb-6">{content.content.text}</p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {content.content.features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white/5 p-6 rounded-lg"
+              >
+                <div className="text-3xl mb-4">{feature.icon}</div>
+                <h3 className="font-bold mb-2">{feature.title}</h3>
+                <p className="text-gray-400">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      );
+
+    case 'framer-examples':
+      return (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-12"
+        >
+          <h2 className="text-2xl font-bold mb-4">{content.content.title}</h2>
+          <p className="text-gray-300 mb-8">{content.content.intro}</p>
+          
+          <div className="space-y-12">
+            {content.content.examples.map((example, index) => (
+              <div key={index} className="bg-white/5 rounded-lg p-6">
+                <h3 className="text-xl font-bold mb-2">{example.title}</h3>
+                <p className="text-gray-300 mb-4">{example.description}</p>
+                <pre className="bg-black/50 p-4 rounded-lg overflow-x-auto mb-4">
+                  <code className="text-sm font-mono text-purple-400">{example.code}</code>
+                </pre>
+                <p className="text-sm text-purple-400">💡 Tip: {example.tips}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 bg-white/5 rounded-lg p-6">
+            <h3 className="text-xl font-bold mb-4">Best Practices</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              {content.content.bestPractices.map((practice, index) => (
+                <li key={index}>{practice}</li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
+      );
+
+    case 'advanced-animations':
+      return (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-12"
+        >
+          <h2 className="text-2xl font-bold mb-4">{content.content.title}</h2>
+          <p className="text-gray-300 mb-8">{content.content.description}</p>
+          
+          <div className="space-y-8">
+            {content.content.patterns.map((pattern, index) => (
+              <div key={index} className="bg-white/5 rounded-lg p-6">
+                <h3 className="text-xl font-bold mb-2">{pattern.title}</h3>
+                <pre className="bg-black/50 p-4 rounded-lg overflow-x-auto mb-4">
+                  <code className="text-sm font-mono text-purple-400">{pattern.code}</code>
+                </pre>
+                <p className="text-gray-300">{pattern.explanation}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 bg-white/5 rounded-lg p-6">
+            <h3 className="text-xl font-bold mb-4">Pro Tips</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              {content.content.tips.map((tip, index) => (
+                <li key={index}>{tip}</li>
+              ))}
+            </ul>
+          </div>
         </motion.div>
       );
 

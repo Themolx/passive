@@ -83,8 +83,9 @@ function GlitchPackV2() {
           <h2 className="text-3xl font-bold mb-8">See the Difference</h2>
           <div className="max-w-4xl mx-auto">
             <ImageCompareSlider
-              beforeImage="/assets/Glitch/before.jpg"
-              afterImage="/assets/Glitch/after.jpg"
+              beforeSrc="/assets/glitchpack1/glitch_raw.mp4"
+              afterSrc="/assets/glitchpack1/glitch_glitched.mp4"
+              isVideo={true}
             />
             <p className="text-gray-400 text-center mt-4">
               Drag the slider to compare the original footage with the applied effect

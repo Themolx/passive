@@ -22,6 +22,7 @@ import ResolumeEffectsPack from './pages/products/ResolumeEffectsPack';
 import AnalogGrainPack from './pages/products/AnalogGrainPack';
 import TransitionPack from './pages/products/TransitionPack';
 import ScrollToTop from './components/common/ScrollToTop';
+import { blogPosts } from './data/blogPosts'; // Verify this import path
 
 // Separate Home component
 const Home = () => {

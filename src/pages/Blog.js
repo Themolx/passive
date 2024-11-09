@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { blogPosts } from '../data/blogPosts/index';
 
 function Blog() {
+  console.log('Current blogPosts:', Object.keys(blogPosts));
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-24">
       <h1 className="text-4xl font-bold mb-12">Blog Posts</h1>
