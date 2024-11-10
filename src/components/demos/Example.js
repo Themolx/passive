@@ -4,148 +4,120 @@ import { useState } from 'react';
 export const Example = () => {
   const [activeDemo, setActiveDemo] = useState(null);
   const controls = useAnimation();
-  const [isOpen, setIsOpen] = useState(false);
 
   const demos = [
     {
-      title: "Framer Motion Demo 🎨",
+      title: "Drag Playground 🎯",
       color: "bg-gradient-to-r from-purple-500 to-pink-500",
       content: (
-        <div className="flex flex-wrap gap-8 justify-center">
-          {/* Basic Blob */}
+        <div className="flex flex-wrap gap-8 justify-center min-h-[400px] relative bg-black/20 rounded-xl p-8">
+          {/* Basic Drag */}
           <motion.div
-            className="w-64 h-64 bg-gradient-to-r from-purple-500 to-pink-500 rounded-[42%_58%_70%_30%] flex items-center justify-center"
-            animate={{
-              borderRadius: [
-                "42% 58% 70% 30%",
-                "30% 60% 70% 40%",
-                "60% 40% 30% 70%",
-                "42% 58% 70% 30%"
-              ]
+            drag
+            dragConstraints={{
+              top: -100,
+              left: -100,
+              right: 100,
+              bottom: 100
             }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              repeatType: "reverse"
-            }}
-          >
-            <span className="text-white font-bold">Basic Blob</span>
-          </motion.div>
-
-          {/* Interactive Blob */}
-          <motion.div
-            className="w-64 h-64 bg-gradient-to-r from-purple-500 to-pink-500 rounded-[42%_58%_70%_30%] flex items-center justify-center"
-            animate={{
-              borderRadius: [
-                "42% 58% 70% 30%",
-                "30% 60% 70% 40%",
-                "60% 40% 30% 70%",
-                "42% 58% 70% 30%"
-              ]
-            }}
-            whileHover={{
-              scale: 1.1,
-              rotate: 15,
-              transition: { duration: 0.3 }
-            }}
+            className="w-32 h-32 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center cursor-grab active:cursor-grabbing"
+            whileDrag={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              repeatType: "reverse"
-            }}
           >
-            <motion.span 
-              className="text-white font-bold"
-              whileHover={{ scale: 1.2 }}
-            >
-              Hover Me
-            </motion.span>
+            <span className="text-white font-bold">Drag Me!</span>
           </motion.div>
 
-          {/* Active Blob */}
+          {/* Elastic Drag */}
           <motion.div
-            className="w-64 h-64 bg-gradient-to-r from-blue-500 to-purple-500 rounded-[42%_58%_70%_30%] flex items-center justify-center cursor-pointer"
-            animate={{
-              borderRadius: isOpen 
-                ? ["50% 50% 50% 50%"]
-                : [
-                    "42% 58% 70% 30%",
-                    "30% 60% 70% 40%",
-                    "60% 40% 30% 70%",
-                    "42% 58% 70% 30%"
-                  ],
-              rotate: isOpen ? 360 : 0,
-              scale: isOpen ? 1.2 : 1
+            drag
+            dragElastic={0.5}
+            dragConstraints={{
+              top: -100,
+              left: -100,
+              right: 100,
+              bottom: 100
             }}
-            onClick={() => setIsOpen(!isOpen)}
-            transition={{
-              duration: isOpen ? 0.8 : 8,
-              repeat: isOpen ? 0 : Infinity,
-              repeatType: "reverse"
-            }}
+            className="w-32 h-32 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center cursor-grab active:cursor-grabbing"
+            whileDrag={{ scale: 1.1, rotate: 180 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <motion.span 
-              className="text-white font-bold"
+            <span className="text-white font-bold">Elastic!</span>
+          </motion.div>
+
+          {/* Axis Lock Drag */}
+          <motion.div
+            drag="x"
+            dragConstraints={{
+              left: -100,
+              right: 100
+            }}
+            className="w-32 h-32 bg-gradient-to-r from-green-500 to-yellow-500 rounded-xl flex items-center justify-center cursor-grab active:cursor-grabbing"
+            whileDrag={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="text-white font-bold">X-Axis Only</span>
+          </motion.div>
+        </div>
+      )
+    },
+    {
+      title: "Morphing Cards 🃏",
+      color: "bg-gradient-to-r from-indigo-500 to-blue-500",
+      content: (
+        <div className="flex justify-center items-center p-8 min-h-[400px] relative">
+          {[...Array(5)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="w-32 h-48 absolute"
+              initial={{ rotate: 0, x: 0 }}
               animate={{
-                scale: isOpen ? 1.2 : 1
+                rotate: [-5 + i * 2.5, 5 + i * 2.5],
+                y: [0, -5, 0],
+                borderRadius: ["16px", "40% 60% 60% 40% / 60% 30% 70% 40%", "16px"],
+                background: [
+                  "linear-gradient(45deg, #4f46e5, #818cf8)",
+                  "linear-gradient(45deg, #7c3aed, #4f46e5)",
+                  "linear-gradient(45deg, #4f46e5, #818cf8)"
+                ]
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                repeatType: "reverse",
+                delay: i * 0.2,
+                ease: "easeInOut"
+              }}
+              whileHover={{
+                y: -50,
+                rotate: 0,
+                borderRadius: "16px",
+                transition: { duration: 0.2 }
+              }}
+              style={{
+                zIndex: i
               }}
             >
-              {isOpen ? "Active!" : "Click me"}
-            </motion.span>
-          </motion.div>
-        </div>
-      )
-    },
-    {
-      title: "Chain Reaction 🔄",
-      color: "bg-gradient-to-r from-blue-500 to-teal-500",
-      content: (
-        <div className="grid grid-cols-4 gap-2 p-4">
-          {[...Array(16)].map((_, i) => {
-            const row = Math.floor(i / 4);
-            const col = i % 4;
-            
-            return (
               <motion.div
-                key={i}
-                className="aspect-square bg-white/20 rounded-lg cursor-pointer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={async () => {
-                  controls.start(`cell${i}`, {
-                    scale: [1, 1.4, 1],
-                    rotate: 360,
-                    transition: { duration: 0.5 }
-                  });
-
-                  const neighbors = [];
-                  if (row > 0) neighbors.push(i - 4);
-                  if (row < 3) neighbors.push(i + 4);
-                  if (col > 0) neighbors.push(i - 1);
-                  if (col < 3) neighbors.push(i + 1);
-
-                  neighbors.forEach((n, index) => {
-                    controls.start(`cell${n}`, {
-                      scale: [1, 1.2, 1],
-                      rotate: 180,
-                      transition: { 
-                        duration: 0.3,
-                        delay: 0.1 * (index + 1)
-                      }
-                    });
-                  });
+                className="w-full h-full flex items-center justify-center text-white font-bold"
+                animate={{
+                  opacity: [0.7, 1, 0.7]
                 }}
-                animate={controls}
-                custom={`cell${i}`}
-              />
-            );
-          })}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  delay: i * 0.2
+                }}
+              >
+                {i + 1}
+              </motion.div>
+            </motion.div>
+          ))}
         </div>
       )
     },
     {
-      title: "Particle Field 🌟",
+      title: "Particle Field ✨",
       color: "bg-gradient-to-r from-green-500 to-yellow-500",
       content: (
         <div className="relative h-[300px] bg-black/20 rounded-lg overflow-hidden">
@@ -182,12 +154,12 @@ export const Example = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[600px] p-8">
-      <div className="grid grid-cols-2 gap-4 mb-8 w-full max-w-2xl">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 w-full max-w-4xl">
         {demos.map((demo, index) => (
           <motion.button
             key={index}
-            className={`${demo.color} p-6 rounded-xl text-white font-bold text-lg`}
-            whileHover={{ scale: 1.02 }}
+            className={`${demo.color} p-6 rounded-xl text-white font-bold text-lg shadow-lg`}
+            whileHover={{ scale: 1.02, boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}
             whileTap={{ scale: 0.98 }}
             onClick={() => setActiveDemo(activeDemo === index ? null : index)}
           >
@@ -203,7 +175,7 @@ export const Example = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className={`${demos[activeDemo].color} p-8 rounded-xl w-full max-w-2xl`}
+            className={`${demos[activeDemo].color} p-8 rounded-xl w-full max-w-4xl shadow-2xl`}
           >
             {demos[activeDemo].content}
           </motion.div>
