@@ -20,14 +20,13 @@
 					Default0 = 0.709,
 				},
 				Input1 = InstanceInput {
-					SourceOp = "AlphaMultiply1",
-					Source = "Blend",
-					Name = "Transparency",
-					Default = 0,
-					MinScale = 0.0,
+					SourceOp = "ColorCorrector1",
+					Source = "Hue1",
+					Name = "Hue",
+					Default = -0.33,
+					MinScale = -1.0,
 					MaxScale = 1.0,
-					Page = "Controls",
-					Default0 = 0.622,
+					Page = "Color"
 				},
 				Input5 = InstanceInput {
 					SourceOp = "Displace1",
@@ -70,34 +69,31 @@
 					Default0 = 0,
 				},
 				Input2 = InstanceInput {
-					SourceOp = "InvertColor1",
-					Source = "Blend",
-					Name = "Color Inversion",
-					Default = 0,
+					SourceOp = "ColorCorrector1",
+					Source = "Saturation1",
+					Name = "Saturation",
+					Default = 0.58,
 					MinScale = 0.0,
-					MaxScale = 1.0,
-					Page = "Color",
-					Default0 = 1.0,
+					MaxScale = 2.0,
+					Page = "Color"
 				},
 				Input9 = InstanceInput {
-					SourceOp = "BrightnessContrast1",
-					Source = "Gain",
-					Name = "Contrast",
-					Default = 0,
+					SourceOp = "ColorCorrector1",
+					Source = "MasterRGBGain",
+					Name = "Gain",
+					Default = 0.67,
 					MinScale = 0.0,
 					MaxScale = 2.0,
-					Page = "Color",
-					Default0 = 1.0,
+					Page = "Color"
 				},
 				Input10 = InstanceInput {
-					SourceOp = "BrightnessContrast1",
-					Source = "Gamma",
-					Name = "Brightness",
-					Default = 0,
+					SourceOp = "ColorCorrector1",
+					Source = "MasterRGBGamma",
+					Name = "Gamma",
+					Default = 0.75,
 					MinScale = 0.0,
 					MaxScale = 2.0,
-					Page = "Color",
-					Default0 = 1.0,
+					Page = "Color"
 				},
 				Input11 = InstanceInput {
 					SourceOp = "ColorCorrector1",
@@ -153,31 +149,28 @@
 					SourceOp = "ColorCorrector1",
 					Source = "MasterRed",
 					Name = "Red Tint",
-					Default = 0,
+					Default = 1.0,
 					MinScale = 0.0,
 					MaxScale = 4.0,
 					Page = "Color",
-					Default0 = 1.0,
 				},
 				Input16 = InstanceInput {
 					SourceOp = "ColorCorrector1",
 					Source = "MasterGreen",
 					Name = "Green Tint",
-					Default = 0,
+					Default = 1.0,
 					MinScale = 0.0,
 					MaxScale = 4.0,
 					Page = "Color",
-					Default0 = 1.0,
 				},
 				Input17 = InstanceInput {
 					SourceOp = "ColorCorrector1",
 					Source = "MasterBlue",
 					Name = "Blue Tint",
-					Default = 0,
+					Default = 1.0,
 					MinScale = 0.0,
 					MaxScale = 4.0,
 					Page = "Color",
-					Default0 = 1.0,
 				},
 				Input18 = InstanceInput {
 					SourceOp = "ColorCorrector1",
@@ -228,6 +221,42 @@
 					MaxScale = 1.0,
 					Page = "Color",
 					Default0 = 0.0,
+				},
+				Input27 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "HueShift",
+					Name = "Hue",
+					Default = -0.33,
+					MinScale = -1.0,
+					MaxScale = 1.0,
+					Page = "Color"
+				},
+				Input28 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "SaturationLevel",
+					Name = "Saturation",
+					Default = 0.58,
+					MinScale = 0.0,
+					MaxScale = 2.0,
+					Page = "Color"
+				},
+				Input29 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "GainLevel",
+					Name = "Gain",
+					Default = 0.67,
+					MinScale = 0.0,
+					MaxScale = 2.0,
+					Page = "Color"
+				},
+				Input30 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "GammaLevel",
+					Name = "Gamma",
+					Default = 0.75,
+					MinScale = 0.0,
+					MaxScale = 2.0,
+					Page = "Color"
 				},
 			},
 			Outputs = {
@@ -297,11 +326,11 @@
 							Source = "Output",
 						},
 						Foreground = Input {
-							SourceOp = "MediaIn3",
+							SourceOp = "ColorCorrector1",
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 1341.63, -79.5151 } },
+					ViewInfo = OperatorInfo { Pos = { 514, 440.063 } },
 				},
 				PipeRouter3 = PipeRouter {
 					Inputs = {
@@ -438,7 +467,7 @@
 						ClipTimeEnd = Input { Value = 2999, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1329.13, -384.953 } },
+					ViewInfo = OperatorInfo { Pos = { 501.5, 134.625 } },
 				},
 				MediaIn2 = MediaIn {
 					ExtentSet = true,
@@ -487,6 +516,43 @@
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 					},
 					ViewInfo = OperatorInfo { Pos = { 842.948, -510.854 } },
+				},
+				ColorCorrector1 = ColorCorrector {
+					CtrlWZoom = false,
+					Inputs = {
+						Hue1 = Input { Value = -0.33 },
+						Saturation1 = Input { Value = 0.58 },
+						MasterRGBGain = Input { Value = 0.67 },
+						MasterRGBGamma = Input { Value = 0.75 },
+						ColorRanges = Input {
+							Value = ColorCurves {
+								Curves = {
+									{
+										Points = {
+											{ 0, 1 },
+											{ 0.4, 0.2 },
+											{ 0.6, 0 },
+											{ 1, 0 }
+										}
+									},
+									{
+										Points = {
+											{ 0, 0 },
+											{ 0.4, 0 },
+											{ 0.6, 0.2 },
+											{ 1, 1 }
+										}
+									}
+								}
+							},
+						},
+						HistogramIgnoreTransparent = Input { Value = 1, },
+						Input = Input {
+							SourceOp = "MediaIn3",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 472.941, 277.677 } },
 				}
 			},
 		}
