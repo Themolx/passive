@@ -1,97 +1,55 @@
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import React, { useState, useRef } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useDrag } from "react-use-gesture";
 
 export const BlobDemo = () => {
   const [isActive, setIsActive] = useState(false);
+  const controls = useAnimation();
+
+  // Handle draggable blobs
+  const bind = useDrag(({ offset: [x, y] }) => {
+    controls.start({
+      x,
+      y,
+      transition: { type: "spring", stiffness: 400, damping: 40 }
+    });
+  });
 
   return (
-    <div className="flex flex-wrap gap-8 justify-center p-8">
-      {/* Basic Blob */}
+    <div className="min-h-screen flex flex-wrap gap-8 justify-center items-center p-8 bg-gradient-to-br from-purple-900 via-blue-900 to-purple-900">
+      {/* Draggable Blob */}
       <motion.div
-        className="w-64 h-64 bg-gradient-to-r from-purple-500 to-pink-500 rounded-[42%_58%_70%_30%] flex items-center justify-center"
-        animate={{
-          borderRadius: [
-            "42% 58% 70% 30%",
-            "30% 60% 70% 40%",
-            "60% 40% 30% 70%",
-            "42% 58% 70% 30%"
-          ]
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          repeatType: "reverse"
-        }}
+        {...bind()}
+        className="w-64 h-64 relative cursor-grab rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg"
+        animate={controls}
+        whileTap={{ cursor: "grabbing", scale: 1.02 }}
+        whileHover={{ scale: 1.05 }}
       >
-        <span className="text-white font-bold">Basic Blob</span>
+        <span className="absolute inset-0 flex items-center justify-center text-white font-semibold text-lg">
+          Drag Me
+        </span>
       </motion.div>
 
-      {/* Interactive Blob */}
+      {/* Simple Interactive Blob */}
       <motion.div
-        className="w-64 h-64 bg-gradient-to-r from-purple-500 to-pink-500 rounded-[42%_58%_70%_30%] flex items-center justify-center"
-        animate={{
-          borderRadius: [
-            "42% 58% 70% 30%",
-            "30% 60% 70% 40%",
-            "60% 40% 30% 70%",
-            "42% 58% 70% 30%"
-          ]
-        }}
-        whileHover={{
-          scale: 1.1,
-          rotate: 15,
-          transition: { duration: 0.3 }
-        }}
-        whileTap={{ scale: 0.95 }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          repeatType: "reverse"
-        }}
+        className="w-64 h-64 bg-gradient-to-tr from-teal-400 to-blue-500 rounded-full flex items-center justify-center shadow-lg"
+        whileHover={{ scale: 1.05 }}
       >
-        <motion.span 
-          className="text-white font-bold"
-          whileHover={{ scale: 1.2 }}
-        >
+        <span className="text-white font-semibold text-lg">
           Hover Me
-        </motion.span>
+        </span>
       </motion.div>
 
-      {/* Morphing Button */}
+      {/* Simple Button Blob */}
       <motion.button
-        className="relative w-64 h-64 bg-gradient-to-r from-purple-500 to-pink-500"
-        animate={{
-          borderRadius: isActive
-            ? ["42% 58% 70% 30%", "35% 65% 60% 40%", "50% 50% 50% 50%"]
-            : ["42% 58% 70% 30%", "30% 60% 70% 40%", "60% 40% 30% 70%"],
-          rotate: isActive ? 360 : 0,
-          scale: isActive ? 1.2 : 1
-        }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
+        className="w-64 h-64 bg-gradient-to-br from-green-400 to-yellow-500 rounded-full cursor-pointer shadow-lg"
         onClick={() => setIsActive(!isActive)}
-        transition={{
-          duration: isActive ? 0.8 : 8,
-          ease: "easeInOut",
-          repeat: isActive ? 0 : Infinity,
-          repeatType: "reverse"
-        }}
+        whileHover={{ scale: 1.55 }}
+        whileTap={{ scale: 0.95 }}
       >
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 mix-blend-overlay"
-          animate={{
-            opacity: isActive ? 1 : 0
-          }}
-          transition={{ duration: 0.3 }}
-        />
-        <motion.span 
-          className="relative flex h-full items-center justify-center text-white font-bold"
-          animate={{
-            scale: isActive ? 1.2 : 1
-          }}
-        >
-          {isActive ? "Active!" : "Click me"}
-        </motion.span>
+        <span className="text-white font-semibold text-lg">
+          {isActive ? "Active" : "Click Me"}
+        </span>
       </motion.button>
     </div>
   );
