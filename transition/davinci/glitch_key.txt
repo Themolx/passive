@@ -1,0 +1,157 @@
+{
+	Tools = ordered() {
+		PipeRouter3 = PipeRouter {
+			Inputs = {
+				Input = Input {
+					SourceOp = "PipeRouter2",
+					Source = "Output",
+				},
+			},
+			ViewInfo = PipeRouterInfo { Pos = { 279.324, -100.61 } },
+		},
+		MediaIn1 = MediaIn {
+			ExtentSet = true,
+			CustomData = { MediaProps = {
+					MEDIA_AUDIO_TRACKS_DESC = {
+						{
+							MEDIA_AUDIO_BIT_DEPTH = 32,
+							MEDIA_AUDIO_FRAME_RATE = 50,
+							MEDIA_AUDIO_NUM_CHANNELS = 2,
+							MEDIA_AUDIO_SAMPLE_RATE = 48000,
+							MEDIA_AUDIO_START_TIME = 0,
+							MEDIA_AUDIO_TRACK_ID = "90ee70cc-626d-41b4-86de-602187bf2d12",
+							MEDIA_AUDIO_TRACK_NAME = "Compound Clip 1"
+						},
+						{
+							MEDIA_AUDIO_BIT_DEPTH = 32,
+							MEDIA_AUDIO_FRAME_RATE = 50,
+							MEDIA_AUDIO_NUM_CHANNELS = 2,
+							MEDIA_AUDIO_SAMPLE_RATE = 48000,
+							MEDIA_AUDIO_START_TIME = 0,
+							MEDIA_AUDIO_TRACK_ID = "Timeline Audio",
+							MEDIA_AUDIO_TRACK_NAME = "Timeline Audio [GlitchPack_var2]"
+						}
+					},
+					MEDIA_AUDIO_TRACKS_NUM = 2,
+					MEDIA_HAS_AUDIO = true,
+					MEDIA_HEIGHT = 576,
+					MEDIA_IS_SOURCE_RES = false,
+					MEDIA_MARK_IN = 0,
+					MEDIA_MARK_OUT = 2999,
+					MEDIA_NAME = "GlitchPack_vol2_Asset_1",
+					MEDIA_NUM_FRAMES = 104714,
+					MEDIA_PAR = 1.06667,
+					MEDIA_SRC_FRAME_RATE = 50,
+					MEDIA_START_FRAME = 0,
+					MEDIA_WIDTH = 720
+				}, },
+			Inputs = {
+				GlobalOut = Input { Value = 104713, },
+				AudioTrack = Input { Value = FuID { "Timeline Audio" }, },
+				Layer = Input { Value = "0", },
+				ClipTimeEnd = Input { Value = 104713, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				LeftAudio = Input {
+					SourceOp = "Left",
+					Source = "Data",
+				},
+				RightAudio = Input {
+					SourceOp = "Right",
+					Source = "Data",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 423.061, -166.597 } },
+		},
+		Left = AudioDisplay {
+		},
+		Right = AudioDisplay {
+			CtrlWZoom = false,
+		},
+		DeltaKeyer1 = DeltaKeyer {
+			CtrlWZoom = false,
+			Inputs = {
+				BackgroundRed = Input { Value = -2.10428315767786e-05, },
+				BackgroundGreen = Input { Value = 0.0483921058475971, },
+				BackgroundBlue = Input { Value = 0.7894167304039, },
+				TuningRanges = Input {
+					Value = ColorCurves {
+						Curves = {
+							{
+								Points = {
+									{ 0, 1 },
+									{ 0.4, 0.2 },
+									{ 0.6, 0 },
+									{ 1, 0 }
+								}
+							},
+							{
+								Points = {
+									{ 0, 0 },
+									{ 0.4, 0 },
+									{ 0.6, 0.2 },
+									{ 1, 1 }
+								}
+							}
+						}
+					},
+				},
+				Input = Input {
+					SourceOp = "PipeRouter2",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 404.799, -37.872 } },
+		},
+		PipeRouter2 = PipeRouter {
+			Inputs = {
+				Input = Input {
+					SourceOp = "MediaIn1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = PipeRouterInfo { Pos = { 425.015, -103.144 } },
+		},
+		PipeRouter1 = PipeRouter {
+			Inputs = {
+				Input = Input {
+					SourceOp = "PipeRouter3",
+					Source = "Output",
+				},
+			},
+			ViewInfo = PipeRouterInfo { Pos = { 277.93, 37.5402 } },
+		},
+		ChannelBooleans1 = ChannelBoolean {
+			Inputs = {
+				ToAlpha = Input { Value = 8, },
+				Background = Input {
+					SourceOp = "DeltaKeyer1",
+					Source = "Output",
+				},
+				Foreground = Input {
+					SourceOp = "PipeRouter1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 414.558, 55.2841 } },
+		},
+		AlphaMultiply1 = AlphaMultiply {
+			Inputs = {
+				Input = Input {
+					SourceOp = "ChannelBooleans1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 407.448, 123.725 } },
+		},
+		MediaOut1 = MediaOut {
+			Inputs = {
+				Index = Input { Value = "0", },
+				Input = Input {
+					SourceOp = "AlphaMultiply1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 397.549, 200.958 } },
+		}
+	}
+}
