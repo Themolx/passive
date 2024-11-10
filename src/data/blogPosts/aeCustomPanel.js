@@ -1,6 +1,6 @@
 export const aeCustomPanelPost = {
   slug: 'ae-custom-panel',
-  title: "Building a Custom Panel for After Effects with AI",
+  title: "🎨 Building a Custom Panel for After Effects with AI",
   date: "March 29, 2024",
   author: "Martin Tomek",
   tags: ["After Effects", "Automation", "VFX", "Workflow", "Discord"],
@@ -174,25 +174,68 @@ export const aeCustomPanelPost = {
     {
       type: 'conclusion',
       content: {
-        summary: `By combining these tools - Claude AI, Cursor IDE, React, GitHub, and Discord - 
-          I created something more powerful than I initially imagined. What started as a simple
-          automation project became a full-featured production tool that our whole team uses daily.
-          
-          The ability to preview and test the panel in a web browser made development significantly 
-          faster and more collaborative. It's a perfect example of how modern web technologies 
-          can enhance traditional desktop software.`,
-        callToAction: {
-          text: "Want to try it yourself?",
+        sections: [
+          {
+            icon: "🎯",
+            title: "Modern Development is Accessible",
+            content: `Thanks to AI tools like Claude and Cursor, even artists without traditional programming 
+              backgrounds can create professional-grade software. The key is breaking down complex 
+              problems into smaller, manageable pieces.`,
+            color: "from-purple-500 to-blue-500"
+          },
+          {
+            icon: "⚛️",
+            title: "React's Universal Appeal",
+            content: [
+              "Run the same code in After Effects and web browsers",
+              "Leverage a massive ecosystem of components and tools",
+              "Create smooth, professional animations with Framer Motion",
+              "Build a maintainable, scalable codebase"
+            ],
+            color: "from-blue-500 to-cyan-500"
+          },
+          {
+            icon: "🤝",
+            title: "Team Collaboration is Key",
+            content: [
+              "Instant notifications keep everyone in sync",
+              "Version control prevents conflicts and lost work",
+              "Easy sharing of updates and new features",
+              "Collaborative problem-solving and improvements"
+            ],
+            color: "from-cyan-500 to-green-500"
+          },
+          {
+            icon: "⚡",
+            title: "The Power of Integration",
+            content: [
+              "Reduces manual work by 70%",
+              "Eliminates common naming errors",
+              "Speeds up project delivery",
+              "Improves team communication"
+            ],
+            color: "from-green-500 to-emerald-500"
+          }
+        ],
+        outro: {
+          text: `What started as a way to automate repetitive tasks has evolved into an essential 
+            part of our daily workflow, proving that the bridge between creative software and 
+            web technology is more accessible than ever.`,
           links: [
             {
-              text: "View Source on GitHub",
+              icon: "github",
+              text: "View Source",
               url: "https://github.com/Themolx/AeCustomPanel"
+            },
+            {
+              icon: "discord",
+              text: "Join Community",
+              url: "https://discord.gg/aeCustomPanel"
             }
           ]
         },
-        inspiration: `Remember: Modern tools make development accessible to everyone. You don't 
-          need to be a professional programmer to create useful tools! The same React code can 
-          power both web and desktop applications, opening up endless possibilities. 🚀`
+        inspiration: `Start small, experiment often, and don't be afraid to combine different technologies. 
+          The next game-changing tool might be the one you create! 🚀`
       }
     }
   ]
