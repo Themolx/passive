@@ -1,0 +1,495 @@
+{
+	Tools = ordered() {
+		CustomGlitch_Var1 = GroupOperator {
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Displace1",
+					Source = "Input",
+					Name = "Source Image",
+					Default = 0,
+					Page = "Controls",
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Merge2",
+					Source = "Blend",
+					Name = "Overall Mix",
+					Default = 0,
+					MinScale = 0.0,
+					MaxScale = 1.0,
+					Page = "Controls",
+					Default0 = 0.709,
+				},
+				Input1 = InstanceInput {
+					SourceOp = "AlphaMultiply1",
+					Source = "Blend",
+					Name = "Transparency",
+					Default = 0,
+					MinScale = 0.0,
+					MaxScale = 1.0,
+					Page = "Controls",
+					Default0 = 0.622,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "Displace1",
+					Source = "XOffset",
+					Name = "Horizontal Glitch",
+					Default = 0,
+					MinScale = -1.0,
+					MaxScale = 1.0,
+					Page = "Glitch",
+					Default0 = -0.266,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "Displace1",
+					Source = "YOffset",
+					Name = "Vertical Glitch",
+					Default = 0,
+					MinScale = -1.0,
+					MaxScale = 1.0,
+					Page = "Glitch",
+					Default0 = 0,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "Displace1",
+					Source = "XRefraction",
+					Name = "Horizontal Distortion",
+					Default = 0,
+					MinScale = -1.0,
+					MaxScale = 1.0,
+					Page = "Glitch",
+					Default0 = -0.088,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "Displace1",
+					Source = "YRefraction",
+					Name = "Vertical Distortion",
+					Default = 0,
+					MinScale = -1.0,
+					MaxScale = 1.0,
+					Page = "Glitch",
+					Default0 = 0,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "InvertColor1",
+					Source = "Blend",
+					Name = "Color Inversion",
+					Default = 0,
+					MinScale = 0.0,
+					MaxScale = 1.0,
+					Page = "Color",
+					Default0 = 1.0,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Gain",
+					Name = "Contrast",
+					Default = 0,
+					MinScale = 0.0,
+					MaxScale = 2.0,
+					Page = "Color",
+					Default0 = 1.0,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Gamma",
+					Name = "Brightness",
+					Default = 0,
+					MinScale = 0.0,
+					MaxScale = 2.0,
+					Page = "Color",
+					Default0 = 1.0,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "Saturation",
+					Name = "Saturation",
+					Default = 0,
+					MinScale = 0.0,
+					MaxScale = 2.0,
+					Page = "Color",
+					Default0 = 1.0,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "Merge1",
+					Source = "Blend",
+					Name = "Mask Intensity",
+					Default = 0,
+					MinScale = 0.0,
+					MaxScale = 1.0,
+					Page = "Advanced",
+					Default0 = 1.0,
+				},
+				Input12 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "Size",
+					Name = "Scale",
+					Default = 0,
+					MinScale = 0.0,
+					MaxScale = 5.0,
+					Page = "Advanced",
+					Default0 = 1.0,
+				},
+				Input13 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "Angle",
+					Name = "Rotation",
+					Default = 0,
+					MinScale = -180.0,
+					MaxScale = 180.0,
+					Page = "Advanced",
+					Default0 = 0,
+				},
+				Input14 = InstanceInput {
+					SourceOp = "BlurMotion1",
+					Source = "Length",
+					Name = "Motion Blur",
+					Default = 0,
+					MinScale = 0.0,
+					MaxScale = 1.0,
+					Page = "Advanced",
+					Default0 = 0,
+				},
+				Input15 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "MasterRed",
+					Name = "Red Tint",
+					Default = 0,
+					MinScale = 0.0,
+					MaxScale = 4.0,
+					Page = "Color",
+					Default0 = 1.0,
+				},
+				Input16 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "MasterGreen",
+					Name = "Green Tint",
+					Default = 0,
+					MinScale = 0.0,
+					MaxScale = 4.0,
+					Page = "Color",
+					Default0 = 1.0,
+				},
+				Input17 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "MasterBlue",
+					Name = "Blue Tint",
+					Default = 0,
+					MinScale = 0.0,
+					MaxScale = 4.0,
+					Page = "Color",
+					Default0 = 1.0,
+				},
+				Input18 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "MasterSaturation",
+					Name = "Saturation",
+					Default = 0,
+					MinScale = 0.0,
+					MaxScale = 2.0,
+					Page = "Color",
+					Default0 = 1.0,
+				},
+				Input19 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "MasterContrast",
+					Name = "Contrast",
+					Default = 0,
+					MinScale = 0.0,
+					MaxScale = 2.0,
+					Page = "Color",
+					Default0 = 1.0,
+				},
+				Input20 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "MasterGamma",
+					Name = "Gamma",
+					Default = 0,
+					MinScale = 0.5,
+					MaxScale = 2.0,
+					Page = "Color",
+					Default0 = 1.0,
+				},
+				Input21 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "MasterGain",
+					Name = "Gain",
+					Default = 0,
+					MinScale = 0.0,
+					MaxScale = 4.0,
+					Page = "Color",
+					Default0 = 1.0,
+				},
+				Input22 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "MasterLift",
+					Name = "Lift",
+					Default = 0,
+					MinScale = -1.0,
+					MaxScale = 1.0,
+					Page = "Color",
+					Default0 = 0.0,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Merge2",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Transform1_1 = Transform {
+					Inputs = {
+						Size = Input { Value = 2.78, },
+						Input = Input {
+							SourceOp = "AlphaMultiply1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 1329.94, 100.907 } },
+				},
+				AlphaMultiply1 = AlphaMultiply {
+					Inputs = {
+						Blend = Input { Value = 0.622, },
+						Input = Input {
+							SourceOp = "ChannelBooleans2",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 1338.27, -11.4454 } },
+				},
+				PipeRouter1 = PipeRouter {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Transform1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = PipeRouterInfo { Pos = { 828.545, -17.7512 } },
+				},
+				InvertColor1 = ofx.com.blackmagicdesign.resolvefx.InvertColor {
+					PassThrough = true,
+					Inputs = {
+						Source = Input {
+							SourceOp = "PipeRouter4",
+							Source = "Output",
+						},
+						isInvertR = Input { Value = 1, },
+						isInvertG = Input { Value = 1, },
+						isInvertB = Input { Value = 1, },
+						isInvertA = Input { Value = 0, },
+						blendGroup = Input { Value = 0, },
+						blendIn = Input { Value = 1, },
+						blend = Input { Value = 0, },
+						ignoreContentShape = Input { Value = 0, },
+						legacyIsProcessRGBOnly = Input { Value = 0, },
+						IsNoTemporalFramesReqd = Input { Value = 0, },
+						refreshTrigger = Input { Value = 1, },
+						resolvefxVersion = Input { Value = "1.0", },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1201.25, -81.536 } },
+				},
+				ChannelBooleans2 = ChannelBoolean {
+					Inputs = {
+						ToAlpha = Input { Value = 5, },
+						Background = Input {
+							SourceOp = "InvertColor1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "MediaIn3",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 1341.63, -79.5151 } },
+				},
+				PipeRouter3 = PipeRouter {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Transform1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = PipeRouterInfo { Pos = { 672.841, -116.096 } },
+				},
+				Merge2 = Merge {
+					Inputs = {
+						Blend = Input { Value = 0.709, },
+						Background = Input {
+							SourceOp = "Merge1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Transform1_1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 481.196, 100.984 } },
+				},
+				Merge1 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "Displace1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+						Operator = Input { Value = FuID { "Stencil" }, },
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 476.852, -15.13 } },
+				},
+				Displace1 = Displace {
+					Inputs = {
+						Type = Input { Value = 1, },
+						XOffset = Input { Value = -0.266, },
+						XRefraction = Input { Value = -0.088, },
+						Offset = Input { Value = -0.273, },
+						Foreground = Input {
+							SourceOp = "PipeRouter3",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 473.53, -114.76 } },
+				},
+				Transform1 = Transform {
+					Inputs = {
+						Size = Input { Value = 2.78, },
+						Input = Input {
+							SourceOp = "ChannelBooleans1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 837.964, -223.796 } },
+				},
+				ChannelBooleans1 = ChannelBoolean {
+					Inputs = {
+						ToAlpha = Input { Value = 0, },
+						Background = Input {
+							SourceOp = "PipeRouter2",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 851.982, -260.535 } },
+				},
+				PipeRouter2 = PipeRouter {
+					Inputs = {
+						Input = Input {
+							SourceOp = "MediaIn2",
+							Source = "Output",
+						},
+					},
+					ViewInfo = PipeRouterInfo { Pos = { 855.424, -311.578 } },
+				},
+				PipeRouter4 = PipeRouter {
+					Inputs = {
+						Input = Input {
+							SourceOp = "PipeRouter2",
+							Source = "Output",
+						},
+					},
+					ViewInfo = PipeRouterInfo { Pos = { 1203.39, -303.338 } },
+				},
+				MediaIn3 = MediaIn {
+					ExtentSet = true,
+					CustomData = {
+						MEDIA_ID = "d8f2889d-79a4-4618-994d-d155c059d643",
+						MediaProps = {
+							MEDIA_AUDIO_TRACKS_DESC = {
+								{
+									MEDIA_AUDIO_BIT_DEPTH = 32,
+									MEDIA_AUDIO_FRAME_RATE = 50,
+									MEDIA_AUDIO_NUM_CHANNELS = 2,
+									MEDIA_AUDIO_SAMPLE_RATE = 48000,
+									MEDIA_AUDIO_START_TIME = 0,
+									MEDIA_AUDIO_TRACK_ID = "d8f2889d-79a4-4618-994d-d155c059d643",
+									MEDIA_AUDIO_TRACK_NAME = "GlitchPack_vol2_Asset_3.mp4"
+								}
+							},
+							MEDIA_AUDIO_TRACKS_NUM = 1,
+							MEDIA_FORMAT_TYPE = "QuickTime",
+							MEDIA_HAS_AUDIO = true,
+							MEDIA_HEIGHT = 576,
+							MEDIA_IS_SOURCE_RES = true,
+							MEDIA_MARK_IN = 0,
+							MEDIA_MARK_OUT = 2999,
+							MEDIA_NAME = "GlitchPack_vol2_Asset_3.mp4",
+							MEDIA_NUM_FRAMES = 3000,
+							MEDIA_NUM_LAYERS = 1,
+							MEDIA_PAR = 1.06667,
+							MEDIA_PATH = "/Users/martintomek/Library/Mobile Documents/com~apple~CloudDocs/Osobni_projekty/Passive/Products/Real/GlitchPack_vol2/raw/GlitchPack_vol2_Asset_3.mp4",
+							MEDIA_SRC_FRAME_RATE = 50,
+							MEDIA_START_FRAME = 0,
+							MEDIA_WIDTH = 720
+						},
+					},
+					Inputs = {
+						GlobalOut = Input { Value = 3000, },
+						MediaSource = Input { Value = FuID { "MediaPool" }, },
+						MediaID = Input { Value = "d8f2889d-79a4-4618-994d-d155c059d643", },
+						AudioTrack = Input { Value = FuID { "No_Audo_Track" }, },
+						Layer = Input {
+							Value = Text {
+							},
+						},
+						ClipTimeEnd = Input { Value = 2999, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1329.13, -384.953 } },
+				},
+				MediaIn2 = MediaIn {
+					ExtentSet = true,
+					CtrlWZoom = false,
+					CustomData = {
+						MEDIA_ID = "0ffe4a3a-21ed-4001-88ec-9b252e803e58",
+						MediaProps = {
+							MEDIA_AUDIO_TRACKS_DESC = {
+								{
+									MEDIA_AUDIO_BIT_DEPTH = 32,
+									MEDIA_AUDIO_FRAME_RATE = 50,
+									MEDIA_AUDIO_NUM_CHANNELS = 2,
+									MEDIA_AUDIO_SAMPLE_RATE = 48000,
+									MEDIA_AUDIO_START_TIME = 0,
+									MEDIA_AUDIO_TRACK_ID = "0ffe4a3a-21ed-4001-88ec-9b252e803e58",
+									MEDIA_AUDIO_TRACK_NAME = "GlitchPack_vol2_Asset_Key_3.mp4"
+								}
+							},
+							MEDIA_AUDIO_TRACKS_NUM = 1,
+							MEDIA_FORMAT_TYPE = "QuickTime",
+							MEDIA_HAS_AUDIO = true,
+							MEDIA_HEIGHT = 576,
+							MEDIA_IS_SOURCE_RES = true,
+							MEDIA_MARK_IN = 0,
+							MEDIA_MARK_OUT = 2999,
+							MEDIA_NAME = "GlitchPack_vol2_Asset_Key_3.mp4",
+							MEDIA_NUM_FRAMES = 3000,
+							MEDIA_NUM_LAYERS = 1,
+							MEDIA_PAR = 1.06667,
+							MEDIA_PATH = "/Users/martintomek/Library/Mobile Documents/com~apple~CloudDocs/Osobni_projekty/Passive/Products/Real/GlitchPack_vol2/raw/GlitchPack_vol2_Asset_Key_3.mp4",
+							MEDIA_SRC_FRAME_RATE = 50,
+							MEDIA_START_FRAME = 0,
+							MEDIA_WIDTH = 720
+						},
+					},
+					Inputs = {
+						GlobalOut = Input { Value = 3000, },
+						MediaSource = Input { Value = FuID { "MediaPool" }, },
+						MediaID = Input { Value = "0ffe4a3a-21ed-4001-88ec-9b252e803e58", },
+						AudioTrack = Input { Value = FuID { "No_Audo_Track" }, },
+						Layer = Input {
+							Value = Text {
+							},
+						},
+						ClipTimeEnd = Input { Value = 2999, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 842.948, -510.854 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "CustomGlitch_Var1"
+}
